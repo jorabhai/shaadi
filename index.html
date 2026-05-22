@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Her Universe</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Music -->
+
+    <audio id="bg-music" loop>
+        <source src="music/meri-zindagi-hai-tu.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Cursor Glow -->
+
+    <div id="cursor-glow"></div>
+
+    <!-- Universe -->
+
+    <canvas id="universe"></canvas>
+
+    <div class="nebula"></div>
+
+    <div id="quote-container"></div>
+
+    <div id="sparkle-container"></div>
+
+    <!-- Planets -->
+
+    <div class="planet"
+
+         data-x="12%"
+         data-y="18%"
+
+         style="top:18%; left:12%;"
+
+         data-title="The Beginning"
+
+         data-date="When everything changed"
+
+         data-memory="The day we first talked felt like the universe quietly changing around me.">
+
+        💖
+    </div>
+    <div class="planet photo-planet" style="top:20%; left:65%;"
+         data-title="My Love For You"
+         data-date="Yaad rakhna iskoo"
+         data-memory="Bohutt zyada english ho gaya to soche ki kuch apni pyaar ki bhasha mein bole too jaisa ki hum bole h tum hi wo pehli ladki ho jo humko pasand se pyaar tak leke gayi ho hamesha saath reh ke kabhi gussa karke to kabhi daant ke to kabhi pyaar se har chiz samajhayi ho jante hue bhi ki hum dono ke kuch chizo mein bohot difference h you love and I love you I think yahi pyaar hota kyunki pyaar to insaan se karte h jaise tum ki hum kiye jab bhi tum humko wo buddhu pagal bandar gadha ullu babyy babuu mera baccha bolti humko bass tumhara rehne ka dil kar jata h bhul jate h ki bare ho rahe h bass lagta h tumhare paas aake tumhari god mein so jaye tumhare liye hum sab karna chahte h mehnat karenge bohot jisse tumko apne sath ek accha life de paye khayal rakhenge tumhara hamesha bass ek hi dar lagta h humko wo h tumko kho dene ka hum tumko apne se dur hote nahi dekh sakte bass mere paas mere sath meri bankar raho yahi chahte hain hum kabhi kabhi jin bhi galtiyon se hum tumhara dil dukhaye h tumko udaas kiye h bura feel karaye h maaf kar dena please tumko jaise pyaar chahiye waise karne ka sikh rahe hain na to galtiyan ho jati hai promise hum wapis wo galti nahi karenge aur hann kabhi kisi chiz se darna nahi rona nahi thikk hum hamesha hain tumhare sath khade tumhare galat hone pe bhi tumhare sath rahenge sahi hone pe bhi jo haath thame hain tumhara pyaar mein kabhi chorenge nahii sabse ladenge tumhare liyee bas khud se dur nahi jaane denge hamesha hi had se zyada pyaar karenge loveeeeeeeeeeeeeeeeeeee youuuuuuuuuuuuuuuuuuuuuuuuuu meri pyaari shafa tumhara bandar hamesha h tumhare paas💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💗💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝💝🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂🫂❤️">
+        <div class="planet-image-wrapper"></div>
+    </div>
+
+    <div class="planet"
+
+         data-x="78%"
+         data-y="70%"
+
+         style="top:70%; left:78%;"
+
+         data-title="Beautiful Moments"
+
+         data-date="The little things"
+
+         data-memory="You made ordinary moments feel soft, warm and unforgettable.">
+
+        🌸
+    </div>
+    <div class="planet wish-trigger-planet" style="top:70%; left:45%;"
+         data-title="Make A Wish"
+         data-date="For our future"
+         data-memory="Clicking this opens a secret portal to send a wish straight into our universe.">
+        💌
+    </div>
+
+    <div class="planet"
+
+         data-x="82%"
+         data-y="22%"
+
+         style="top:22%; left:82%;"
+
+         data-title="Comfort"
+
+         data-date="My favorite feeling"
+
+         data-memory="Somehow your presence became my comfort place without me even realizing it.">
+
+        ✨
+    </div>
+
+    <div class="planet secret-planet"
+
+         data-x="18%"
+         data-y="78%"
+
+         style="top:78%; left:18%;"
+
+         data-title="A Secret"
+
+         data-date="Only for you"
+
+         data-memory="If I could keep one thing forever, I think I would choose your presence with me.">
+
+        🌙
+    </div>
+    <div class="planet" style="top:65%; left:18%;"
+         data-title="Your Smile"
+         data-date="Every single day"
+         data-memory="Seeing you happy is genuinely the best part of my day. Your smile completely lights up my whole world.Sometime I do make mistakes and get you cry but my heart always wants to see you smiling.">
+        🥺
+    </div>
+
+
+    <div class="planet" style="top:55%; left:89%;"
+         data-title="My Whole World"
+         data-date="Always & Forever"
+         data-memory="Out of the billions of stars in the galaxy, I'm so incredibly glad my universe brought me directly to you.">
+        🌍
+    </div>
+
+    <div class="planet" style="top:12%; left:45%;"
+         data-title="Pure Happiness"
+         data-date="A special feeling"
+         data-memory="You are my favorite thought, my safest space, and the person who makes everything feel completely beautiful.">
+        🦋
+    </div>
+
+    <!-- Memory Card -->
+
+    <div id="memory-card">
+
+        <div class="card-content">
+
+            <span id="close-btn">✕</span>
+
+            <h2 id="card-title"></h2>
+
+            <h4 id="card-date"></h4>
+
+            <p id="card-memory"></p>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="content">
+
+        <h1>Something For My Oxygen...</h1>
+
+        <p>
+            Somewhere between the stars...
+            I found you.
+        </p>
+
+    </div>
+    <div id="relationship-clock">
+        <div class="clock-label">Our Timeline Together</div>
+        <div id="clock-digits">000d : 00h : 00m : 00s</div>
+    </div>
+
+    <div id="wish-card" class="wish-overlay">
+        <div class="wish-content">
+            <span id="close-wish-btn">✕</span>
+            <h3>Make a Wish upon a Star ✨</h3>
+            <p>Write down whatever your heart desires, and send it out into our universe...</p>
+            <textarea id="wish-text" placeholder="I wish that..."></textarea>
+            <button id="submit-wish-btn">Make Your Wish</button>
+        </div>
+    </div>
+
+    <div id="wish-success-card" class="wish-overlay">
+        <div class="wish-success-content">
+            <h2>Your wish will come true! 🌌</h2>
+            <hr class="wish-divider">
+            <p class="spoiler-tag"><strong>Spoiler alert:</strong> My biggest wish already came true the exact second I found you. 💖</p>
+            <button id="close-success-btn">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

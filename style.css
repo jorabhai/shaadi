@@ -1,0 +1,1128 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    overflow:hidden;
+
+    height:100vh;
+
+    background:
+    radial-gradient(circle at center,
+    #120018 0%,
+    #080011 45%,
+    #010109 100%);
+
+    font-family:Arial, sans-serif;
+}
+
+/* Universe Canvas */
+
+#universe{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    top:0;
+    left:0;
+
+    z-index:1;
+}
+
+/* Nebula */
+
+.nebula{
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    border-radius:50%;
+
+    top:55%;
+    left:50%;
+
+    transform:translate(-50%, -50%);
+
+    background:
+    radial-gradient(circle,
+    rgba(180,120,255,0.08),
+    rgba(255,105,180,0.04),
+    rgba(0,0,0,0));
+
+    filter:blur(80px);
+
+    animation:pulse 10s ease-in-out infinite;
+
+    z-index:2;
+}
+
+/* Cursor Glow */
+
+#cursor-glow{
+
+    position:fixed;
+
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,105,180,0.15),
+        rgba(180,120,255,0.06),
+        transparent
+    );
+
+    transform:
+    translate(-50%, -50%);
+
+    z-index:2;
+
+    mix-blend-mode:screen;
+}
+
+/* Main Content */
+
+.content{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    pointer-events:none;
+}
+
+.content h1{
+
+    color:white;
+
+    font-size:54px;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+
+    text-shadow:
+    0 0 6px rgba(255,255,255,0.25),
+    0 0 18px rgba(255,105,180,0.25);
+
+    animation:fadeUp 2s ease;
+}
+
+.content p{
+
+    color:#ffd6ec;
+
+    font-size:20px;
+
+    width:700px;
+
+    max-width:90%;
+
+    line-height:1.6;
+
+    animation:fadeUp 3s ease;
+}
+
+/* Planets */
+
+.planet{
+
+    position:absolute;
+
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    z-index:6;
+
+    backdrop-filter:blur(8px);
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:
+    1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+    0 0 18px rgba(255,105,180,0.22);
+
+    animation:
+    floatPlanet 6s ease-in-out infinite,
+    planetGlow 4s ease-in-out infinite;
+
+    transition:0.3s;
+}
+
+.planet:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+    0 0 35px rgba(255,105,180,0.45);
+}
+
+.planet::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:130%;
+    height:130%;
+
+    border-radius:50%;
+
+    border:
+    1px solid rgba(255,255,255,0.05);
+
+    animation:
+    rotateRing 12s linear infinite;
+}
+
+/* Floating Quotes */
+
+#quote-container{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:4;
+}
+
+.quote{
+
+    position:absolute;
+
+    color:rgba(255,214,236,0.45);
+
+    font-size:16px;
+
+    animation:
+    quoteFloat 10s linear forwards;
+}
+
+/* Sparkles */
+
+.sparkle{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:0;
+
+    animation:
+    sparkleAnim 4s linear forwards;
+}
+
+/* Galaxy Dust */
+
+.dust{
+
+    position:fixed;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:white;
+
+    z-index:3;
+
+    box-shadow:
+    0 0 10px white,
+    0 0 18px #ff9ad5;
+
+    animation:
+    dustFade 1.2s linear forwards;
+}
+
+/* Memory Card */
+
+#memory-card{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:
+    rgba(0,0,0,0.18);
+
+    backdrop-filter:
+    blur(10px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+    opacity 0.5s ease;
+
+    z-index:100;
+}
+
+#memory-card.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.card-content{
+
+    position:relative;
+
+    width:90%;
+
+    max-width:500px;
+
+    padding:35px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.03)
+    );
+
+    border:
+    1px solid rgba(255,255,255,0.1);
+
+    box-shadow:
+    0 0 40px rgba(255,105,180,0.18);
+
+    backdrop-filter:
+    blur(15px);
+
+    transform:
+    scale(0.8);
+
+    transition:0.4s;
+}
+
+#memory-card.active .card-content{
+
+    transform:
+    scale(1);
+}
+
+#card-title{
+
+    color:white;
+
+    font-size:32px;
+
+    margin-bottom:10px;
+}
+
+#card-date{
+
+    color:#ffb7df;
+
+    margin-bottom:22px;
+
+    font-size:16px;
+}
+
+#card-memory{
+
+    color:#ffe8f5;
+
+    font-size:18px;
+
+    line-height:1.8;
+}
+
+/* Close Button */
+
+#close-btn{
+
+    position:absolute;
+
+    top:15px;
+    right:22px;
+
+    color:white;
+
+    font-size:26px;
+
+    cursor:pointer;
+}
+
+/* Constellation Name */
+
+#constellation-name{
+
+    position:fixed;
+
+    top:32%;
+    left:50%;
+
+    transform:
+    translate(-50%, -50%);
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    letter-spacing:4px;
+
+    z-index:20;
+
+    pointer-events:none;
+
+    opacity:0;
+    text-align: center;
+    width: 100%;
+
+
+    text-shadow:
+    0 0 8px rgba(255,255,255,0.35),
+    0 0 18px rgba(255,105,180,0.28),
+    0 0 30px rgba(180,120,255,0.18);
+
+    transition:
+    opacity 1.5s ease;
+
+   
+}
+
+#constellation-name.show{
+
+    opacity:1;
+}
+
+/* Love Messages */
+
+.love-message{
+
+    position:fixed;
+
+    color:
+    rgba(255,220,240,0.2);
+
+    font-size:16px;
+
+    pointer-events:none;
+
+    z-index:2;
+
+    white-space:nowrap;
+
+    animation:
+    loveFloat 12s linear forwards;
+}
+
+/* Animations */
+
+@keyframes pulse{
+
+    0%{
+        transform:
+        translate(-50%, -50%)
+        scale(1);
+    }
+
+    50%{
+        transform:
+        translate(-50%, -50%)
+        scale(1.03);
+    }
+
+    100%{
+        transform:
+        translate(-50%, -50%)
+        scale(1);
+    }
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes floatPlanet{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@keyframes rotateRing{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes quoteFloat{
+
+    0%{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    90%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+}
+
+@keyframes sparkleAnim{
+
+    0%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.3);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(0);
+    }
+}
+
+@keyframes dustFade{
+
+    0%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:
+        scale(0)
+        translateY(-20px);
+    }
+}
+
+@keyframes loveFloat{
+
+    0%{
+        opacity:0;
+        transform:
+        translateY(40px)
+        scale(0.8);
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    90%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+        translateY(-120px)
+        scale(1.1);
+    }
+}
+
+@keyframes constellationFloat{
+
+    0%{
+        transform:
+        translate(-50%, -50%)
+        translateY(0px);
+    }
+
+    50%{
+        transform:
+        translate(-50%, -50%)
+        translateY(-8px);
+    }
+
+    100%{
+        transform:
+        translate(-50%, -50%)
+        translateY(0px);
+    }
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .content h1{
+
+        font-size:34px;
+    }
+
+    .content p{
+
+        font-size:16px;
+    }
+
+    .planet{
+
+        width:65px;
+        height:65px;
+
+        font-size:22px;
+    }
+
+    #constellation-name{
+
+        font-size:22px;
+
+        top:36%;
+    }
+}
+/* =========================================
+   MOBILE PORTRAIT
+========================================= */
+
+@media screen and (max-width:768px)
+and (orientation:portrait){
+
+    .content{
+
+        padding:20px;
+    }
+
+    .content h1{
+
+        font-size:34px;
+
+        line-height:1.3;
+
+        width:100%;
+    }
+
+    .content p{
+
+        font-size:16px;
+
+        width:95%;
+
+        line-height:1.7;
+    }
+
+    .planet{
+
+        width:65px;
+        height:65px;
+
+        font-size:22px;
+    }
+
+    #constellation-name{
+
+        font-size:22px;
+
+        top:34%;
+
+        width:90%;
+
+        text-align:center;
+    }
+
+    .card-content{
+
+        width:92%;
+
+        padding:28px;
+    }
+
+    #card-title{
+
+        font-size:28px;
+    }
+
+    #card-memory{
+
+        font-size:16px;
+
+        line-height:1.7;
+    }
+
+    #cursor-glow{
+
+        width:100px;
+        height:100px;
+    }
+
+    .love-message{
+
+        font-size:14px;
+    }
+}
+
+/* =========================================
+   MOBILE LANDSCAPE
+========================================= */
+
+@media screen and (max-width:950px)
+and (orientation:landscape){
+
+    .content{
+
+        padding:15px;
+    }
+
+    .content h1{
+
+        font-size:28px;
+
+        line-height:1.2;
+    }
+
+    .content p{
+
+        font-size:14px;
+
+        width:80%;
+    }
+
+    .planet{
+
+        width:58px;
+        height:58px;
+
+        font-size:20px;
+    }
+
+    #constellation-name{
+
+        font-size:18px;
+
+        top:24%;
+    }
+
+    .card-content{
+
+        max-width:420px;
+
+        padding:24px;
+    }
+
+    #card-title{
+
+        font-size:24px;
+    }
+
+    #card-memory{
+
+        font-size:15px;
+    }
+
+    #cursor-glow{
+
+        width:80px;
+        height:80px;
+    }
+
+    .love-message{
+
+        font-size:12px;
+    }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media screen and (max-width:400px){
+
+    .content h1{
+
+        font-size:28px;
+    }
+
+    .content p{
+
+        font-size:14px;
+    }
+
+    .planet{
+
+        width:55px;
+        height:55px;
+
+        font-size:18px;
+    }
+
+    #constellation-name{
+
+        font-size:18px;
+    }
+}
+/* =========================
+   CURSOR GLOW
+========================= */
+
+#cursor-glow{
+
+    position:fixed;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,105,180,0.18),
+        rgba(180,120,255,0.08),
+        transparent
+    );
+
+    transform:
+    translate(-50%, -50%);
+
+    z-index:2;
+
+    mix-blend-mode:screen;
+
+    transition:
+    transform 0.08s linear;
+}
+/* =======================================
+   UPGRADE STYLES: GLOWING COSMIC CARDS
+======================================= */
+
+/* Live Relationship Clock UI Container */
+#relationship-clock {
+    position: fixed;
+    bottom: 85px;
+    left: 39%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 105, 180, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 12px 25px;
+    border-radius: 20px;
+    z-index: 90;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.15);
+    width: auto;
+    max-width: 90%;
+}
+
+.clock-label {
+    color: #ffb7df;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+}
+
+#clock-digits {
+    color: #ffffff;
+    font-family: monospace, Arial, sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* Modal Structural Overlays */
+.wish-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(5, 2, 12, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 1000; /* Force it to sit over everything perfectly */
+    padding: 20px;
+}
+
+.wish-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Wish Input Card Styling */
+.wish-content {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(30, 10, 45, 0.45), rgba(10, 5, 25, 0.75));
+    border: 1px solid rgba(255, 105, 180, 0.25);
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.05);
+    text-align: left;
+    transform: translateY(20px) scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wish-overlay.active .wish-content,
+.wish-overlay.active .wish-success-content {
+    transform: translateY(0) scale(1);
+}
+
+.wish-content h3 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(180, 120, 255, 0.6);
+}
+
+.wish-content p {
+    color: #ffd6ec;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Beautiful Input Box Fix */
+#wish-text {
+    width: 100%;
+    height: 110px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 105, 180, 0.2);
+    border-radius: 18px;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    resize: none;
+    outline: none;
+    margin-bottom: 60px; /* Generous space to protect the bottom button */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#wish-text:focus {
+    border-color: rgba(255, 105, 180, 0.6);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+}
+
+/* Gorgeous Absolute Right Bottom Button */
+#submit-wish-btn {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(90deg, #ff69b4, #b478ff);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#submit-wish-btn:hover, #submit-wish-btn:active {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
+}
+
+/* Top Right Close 'X' Button */
+#close-wish-btn {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#close-wish-btn:hover {
+    color: #ffffff;
+}
+/* Success Alert Premium Card Custom Styling */
+.wish-success-content {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    padding: 35px 25px;
+    text-align: center;
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(20, 5, 35, 0.9), rgba(5, 1, 15, 0.95));
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    box-shadow: 0 0 50px rgba(255, 105, 180, 0.35);
+    transform: translateY(20px) scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wish-success-content h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 105, 180, 0.6);
+}
+
+.wish-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.4), transparent);
+    margin-bottom: 22px;
+}
+
+.spoiler-tag {
+    color: #ffe8f5;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+#close-success-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 18px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+#close-success-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+}
+
+/* Responsive adjustments for tiny screen support */
+@media screen and (max-width: 480px) {
+    #relationship-clock { bottom: 500px; padding: 10px 20px; }
+    #clock-digits { font-size: 16px; }
+    .wish-content { padding: 25px 20px; }
+    .wish-content h3 { font-size: 21px; }
+    #wish-text { height: 100px; margin-bottom: 55px; }
+    #submit-wish-btn { bottom: 20px; right: 20px; padding: 10px 20px; }
+}
+/* =======================================
+   UPGRADE STYLES: FLOATING PHOTO PLANET
+======================================= */
+
+.photo-planet {
+    padding: 0 !important; /* Clears internal padding so the photo fills the circle */
+    overflow: hidden;
+}
+
+.planet-image-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* 📸 CHANGE 'us.jpg' TO THE EXACT NAME OF YOUR PHOTO FILE BELOW */
+    background-image: url('1000162863.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+}
+
+/* Enhances the glow slightly on hover when she moves her cursor to it */
+.photo-planet:hover .planet-image-wrapper {
+    transform: scale(1.05);
+}
