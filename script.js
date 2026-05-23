@@ -17,7 +17,7 @@ function resizeCanvas(){
 ========================= */
 
 const stars = [];
-const totalStars = 80;
+const totalStars = 90;
 
 // High-fidelity structural coordinate blueprints mapping the word: S - H - A - F - A
 const letterBlueprints = {
