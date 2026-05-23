@@ -1126,18 +1126,3 @@ and (orientation:landscape){
 .photo-planet:hover .planet-image-wrapper {
     transform: scale(1.05);
 }
-/* ==========================================================
-   CLEAN TARGETED PERFORMANCE FIX (Replaces the broken * override)
-   ========================================================== */
-canvas {
-    will-change: auto; /* Tells the browser to stop forcing infinite hardware layers */
-    image-rendering: auto;
-}
-
-/* Fixes the timeline layout that got broken by the * override */
-#relationship-clock {
-    display: block !important;
-    text-align: center !important;
-    width: max-content !important;
-    white-space: nowrap;
-}
