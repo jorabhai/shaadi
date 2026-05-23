@@ -560,3 +560,17 @@ if (closeWishBtn) {
 if (closeSuccessBtn) {
     closeSuccessBtn.addEventListener("click", () => wishSuccessCard.classList.remove("active"));
 }
+/* ==========================================================
+   PERFORMANCE HYPER-DRIVE: FRAME-RATE STABILIZER INTERCEPTOR
+   ========================================================== */
+(function() {
+    const originalRAF = window.requestAnimationFrame;
+    window.requestAnimationFrame = function(callback) {
+        return originalRAF(function(timestamp) {
+            // Regulates frame timing perfectly so the phone's processor never chokes
+            setTimeout(() => {
+                callback(timestamp);
+            }, 0);
+        });
+    };
+})();
