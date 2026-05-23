@@ -1127,21 +1127,17 @@ and (orientation:landscape){
     transform: scale(1.05);
 }
 /* ==========================================================
-   PERFORMANCE HYPER-DRIVE: GLOBAL GRAPHICS ACCELERATION
+   CLEAN TARGETED PERFORMANCE FIX (Replaces the broken * override)
    ========================================================== */
-* {
-    /* Forces the phone's GPU to process every element on the screen */
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
+canvas {
+    will-change: auto; /* Tells the browser to stop forcing infinite hardware layers */
+    image-rendering: auto;
 }
 
-canvas {
-    /* Sharpens canvas scaling and removes anti-aliasing lag on mobile viewports */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    contain: strict;
+/* Fixes the timeline layout that got broken by the * override */
+#relationship-clock {
+    display: block !important;
+    text-align: center !important;
+    width: max-content !important;
+    white-space: nowrap;
 }
