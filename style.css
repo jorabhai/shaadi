@@ -1126,3 +1126,22 @@ and (orientation:landscape){
 .photo-planet:hover .planet-image-wrapper {
     transform: scale(1.05);
 }
+/* ==========================================================
+   PERFORMANCE HYPER-DRIVE: GLOBAL GRAPHICS ACCELERATION
+   ========================================================== */
+* {
+    /* Forces the phone's GPU to process every element on the screen */
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+canvas {
+    /* Sharpens canvas scaling and removes anti-aliasing lag on mobile viewports */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    contain: strict;
+}
